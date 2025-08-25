@@ -30,23 +30,23 @@ export async function middleware(request: NextRequest) {
     }
 
     if (pathname === "/admin") {
-      return NextResponse.redirect(new URL("/admin/event", request.url));
+      return NextResponse.redirect(new URL("/admin/student", request.url));
     }
   }
 
-  if (pathname.startsWith("/member")) {
+  if (pathname.startsWith("/parents")) {
     if (!token) {
       const url = new URL("/auth/login", request.url);
       url.searchParams.set("callbackUrl", encodeURI(request.url));
       return NextResponse.redirect(url);
     }
 
-    if (pathname === "/member") {
-      return NextResponse.redirect(new URL("/member/profile", request.url));
+    if (pathname === "/parents") {
+      return NextResponse.redirect(new URL("/parents/profile", request.url));
     }
   }
 }
 
 export const config = {
-  matcher: ["/admin/:path*", "/auth/:path*", "/member/:path*"],
+  matcher: ["/admin/:path*", "/auth/:path*", "/parents/:path*"],
 };

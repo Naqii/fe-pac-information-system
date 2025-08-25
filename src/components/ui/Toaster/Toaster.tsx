@@ -2,8 +2,8 @@ import { ReactNode } from "react";
 import { CiCircleCheck, CiCircleRemove } from "react-icons/ci";
 
 const iconList: { [key: string]: ReactNode } = {
-  success: <CiCircleCheck className="text-3xl text-success-500" />,
-  error: <CiCircleRemove className="text-3xl text-danger-500" />,
+  success: <CiCircleCheck className="text-success-500 text-3xl" />,
+  error: <CiCircleRemove className="text-danger-500 text-3xl" />,
 };
 
 interface PropTypes {
@@ -15,9 +15,9 @@ const Toaster = (props: PropTypes) => {
   const { type, message } = props;
   return (
     <div
-      role="alert"
+      role="alret"
       aria-labelledby="toaster-label"
-      className="fixed right-8 top-8 z-50 max-w-xs rounded-xl border border-gray-200 bg-white shadow-sm"
+      className="fixed top-8 left-8 z-50 max-w-xs rounded-xl border border-gray-200 bg-white shadow-sm"
     >
       <div className="flex items-center gap-2 p-4">
         {iconList[type]}

@@ -14,13 +14,13 @@ const Login = () => {
     errors,
   } = useLogin();
   return (
-    <div className="flex w-full flex-col items-center justify-center gap-10 lg:flex-row lg:gap-20">
+    <div className="flex w-full items-center justify-center lg:flex-row lg:gap-20">
       {/* Wrapper Card */}
-      <div className="flex w-[800px] overflow-hidden rounded-xl shadow-lg">
+      <div className="flex w-[800px] rounded-xl">
         {/* Left Side - Background Hijau */}
-        <div className="hidden w-1/2 bg-[#006d63] lg:flex" />
+        <div className="hidden w-1/2 rounded-xl bg-[#006d63] lg:flex" />
         <Card className="flex w-full lg:w-1/2">
-          <CardBody className="p-8">
+          <CardBody className="p-6">
             <h2 className="mb-4 text-2xl font-bold text-[#006d63]">Login</h2>
             {errors.root && (
               <p className="text-danger mb-2 font-medium">
@@ -32,6 +32,7 @@ const Login = () => {
                 "flex flex-col",
                 Object.keys(errors).length > 0 ? "gap-2" : "gap-4",
               )}
+              onSubmit={handleSubmit(handleLogin)}
             >
               <Controller
                 name="identifier"
@@ -67,17 +68,20 @@ const Login = () => {
                       inputWrapper: "border-[#006d63]",
                     }}
                     endContent={
-                      <button
-                        className="foucus:outline-none"
-                        type="button"
-                        onClick={toggleVisibility}
-                      >
-                        {isVisible ? (
-                          <FaEye className="text-default-400 pointer-events-none text-xl" />
-                        ) : (
-                          <FaEyeSlash className="text-default-400 pointer-events-none text-xl" />
-                        )}
-                      </button>
+                      <span className="absolute inset-y-0 right-0 flex items-center pr-3">
+                        <button
+                          className="focus:outline-none"
+                          type="button"
+                          onClick={toggleVisibility}
+                          tabIndex={-1}
+                        >
+                          {isVisible ? (
+                            <FaEye className="text-default-400 pointer-events-none text-xl" />
+                          ) : (
+                            <FaEyeSlash className="text-default-400 pointer-events-none text-xl" />
+                          )}
+                        </button>
+                      </span>
                     }
                   />
                 )}
