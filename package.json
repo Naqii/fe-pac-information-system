@@ -23,7 +23,9 @@
     "react-dom": "19.1.0",
     "react-hook-form": "^7.52.1",
     "react-icons": "^5.2.1",
+    "tailwindcss": "^4.1.12",
     "tailwind-merge": "^2.4.0",
+    "tailwindcss-filters": "^3.0.0",
     "yup": "^1.4.0"
   },
   "devDependencies": {
@@ -32,11 +34,10 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "prettier": "^3.6.2",
-    "prettier-plugin-tailwindcss": "^0.6.14",
     "eslint": "^9",
     "eslint-config-next": "15.5.0",
-    "tailwindcss": "^4.1.12",
+    "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.6.14",
     "typescript": "^5"
   }
 }

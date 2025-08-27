@@ -8,16 +8,18 @@ import {
   Select,
   SelectItem,
   Spinner,
+  Tab,
   Table,
   TableBody,
   TableCell,
   TableColumn,
   TableHeader,
   TableRow,
+  Tabs,
 } from "@heroui/react";
 import { Key, ReactNode, useMemo } from "react";
 import { CiSearch } from "react-icons/ci";
-import { useTableData } from "./useTableData";
+import { useTableDataStudent } from "./useTableDataStudent";
 
 interface PropTypes {
   buttonTopContentLabel?: string;
@@ -31,17 +33,20 @@ interface PropTypes {
   showSearch?: boolean;
   showClass?: string;
   totalPages: number;
+  tabsContent: string;
 }
 
-const DataTable = (props: PropTypes) => {
+const DataTableStudent = (props: PropTypes) => {
   const {
     currentLimit,
     currentPage,
+    currentClass,
 
     handleChangeLimit,
     handleChangePage,
     handleSearch,
     handleClearSearch,
+    handleChangeClass,
   } = useChangeUrl();
 
   const {
@@ -55,13 +60,26 @@ const DataTable = (props: PropTypes) => {
     totalPages,
     showLimit = true,
     showSearch = true,
+    tabsContent = true,
   } = props;
 
-  const { displayedData } = useTableData(data, isLoading ?? false);
+  const { displayedData } = useTableDataStudent(data, isLoading ?? false);
 
   const TopContent = useMemo(() => {
     return (
       <div className="flex flex-col-reverse items-start justify-between gap-y-4 lg:flex-row lg:items-center">
+        {tabsContent && (
+          <Tabs
+            selectedKey={String(currentClass)}
+            onSelectionChange={(key) => handleChangeClass(String(key))}
+            variant="solid"
+            aria-label="Option Class"
+          >
+            <Tab key="PraRemaja" title="PraRemaja" />
+            <Tab key="Remaja" title="Remaja" />
+            <Tab key="Usman" title="Usman" />
+          </Tabs>
+        )}
         {showSearch && (
           <Input
             isClearable
@@ -85,9 +103,12 @@ const DataTable = (props: PropTypes) => {
       </div>
     );
   }, [
+    currentClass,
+    tabsContent,
     buttonTopContentLabel,
     handleClearSearch,
     handleSearch,
+    handleChangeClass,
     onClickButtonTopContent,
     showSearch,
   ]);
@@ -184,4 +205,4 @@ const DataTable = (props: PropTypes) => {
   );
 };
 
-export default DataTable;
+export default DataTableStudent;

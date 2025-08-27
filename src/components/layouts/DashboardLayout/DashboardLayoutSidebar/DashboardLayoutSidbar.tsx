@@ -32,7 +32,7 @@ const DashboardLayoutSidebar = (props: PropTypes) => {
       <div>
         <div className="flex w-full justify-center">
           <Image
-            src="/images/illustration/logo.png"
+            src="/images/illustration/logo.webp"
             alt="logo"
             width={180}
             height={60}
@@ -54,9 +54,7 @@ const DashboardLayoutSidebar = (props: PropTypes) => {
                 ),
               })}
               startContent={item.icon}
-              textValue={item.label}
-              aria-labelledby={item.label}
-              aria-describedby={item.label}
+              aria-label={item.label}
               as={Link}
               href={item.href}
             >

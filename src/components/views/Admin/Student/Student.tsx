@@ -3,10 +3,10 @@ import useStudent from "./useStudent";
 import { Key, ReactNode, useCallback, useEffect } from "react";
 import Image from "next/image";
 import DropDownAction from "@/components/commons/DropDownAction";
-import { useDisclosure } from "@heroui/react";
-import DataTable from "@/components/ui/DataTable";
+import DataTableStudent from "@/components/ui/DataTableStudent";
 import { COLUMN_LISTS_STUDENT } from "./Student.constant";
 import useChangeUrl from "@/hooks/useChangeUrl";
+import { useDisclosure } from "@heroui/react";
 
 const Student = () => {
   const { push, isReady, query } = useRouter();
@@ -21,12 +21,10 @@ const Student = () => {
 
   const addStudentModal = useDisclosure();
   const deleteStudentModal = useDisclosure();
-
-  const { setUrl } = useChangeUrl();
+  const { currentClass } = useChangeUrl();
 
   useEffect(() => {
     if (isReady) {
-      setUrl();
       refetchStudent();
       setSelectedId("");
     }
@@ -38,13 +36,15 @@ const Student = () => {
       switch (columnKey) {
         case "picture":
           return (
-            <Image
-              src={`${cellValue}`}
-              alt="picture"
-              width={100}
-              height={100}
-              className="rounded-lg"
-            />
+            <div className="h-[100px] w-[100px] overflow-hidden rounded-full">
+              <Image
+                src={`${cellValue}`}
+                alt="picture"
+                width={100}
+                height={100}
+                className="object-cover"
+              />
+            </div>
           );
         case "actions":
           return (
@@ -66,7 +66,8 @@ const Student = () => {
   return (
     <section>
       {Object.keys(query).length > 0 && (
-        <DataTable
+        <DataTableStudent
+          tabsContent={currentClass}
           columns={COLUMN_LISTS_STUDENT}
           emptyContent="Student is Empty"
           isLoading={isLoadingStudent || isRefetchingStudent}
