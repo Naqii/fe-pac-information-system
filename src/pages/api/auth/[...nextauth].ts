@@ -29,22 +29,21 @@ export default NextAuth({
           identifier,
           password,
         });
-        const accessToken = resultToken.data.data;
 
-        const me = await authServices.getProfileWithToken(accessToken);
-        const user = me.data.data;
-
-        if (
-          accessToken &&
-          resultToken.status === 200 &&
-          user._id &&
-          me.status === 200
-        ) {
-          user.accessToken = accessToken;
-          return user;
-        } else {
+        if (resultToken.status !== 200) {
           return null;
         }
+
+        const accessToken = resultToken.data.data;
+        const me = await authServices.getProfileWithToken(accessToken);
+
+        if (me.status !== 200) {
+          return null;
+        }
+
+        const user = me.data.data;
+        user.accessToken = accessToken;
+        return user;
       },
     }),
   ],

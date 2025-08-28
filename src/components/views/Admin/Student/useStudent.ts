@@ -1,6 +1,7 @@
 import useChangeUrl from "@/hooks/useChangeUrl";
 import studentServices from "@/services/student.services";
 import { useQuery } from "@tanstack/react-query";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
@@ -16,8 +17,8 @@ const useStudent = () => {
       params += `&search=${currentSearch}`;
     }
     const res = await studentServices.getStudent(params);
-    // const { data } = res;
-    return res.data;
+    const { data } = res;
+    return data;
   };
 
   const {
@@ -34,7 +35,8 @@ const useStudent = () => {
       currentClass,
     ],
     queryFn: () => getStudent(),
-    enabled: router.isReady,
+    enabled:
+      router.isReady && !!currentPage && !!currentLimit && !!currentClass,
   });
 
   return {

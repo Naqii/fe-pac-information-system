@@ -6,6 +6,13 @@ import * as React from "react";
 import { SessionProvider } from "next-auth/react";
 import { ToasterProvider } from "@/contexts/ToasterContext";
 import AppShell from "@/components/commons/AppShell/AppShell";
+import { Session } from "inspector/promises";
+
+type AppPropsWithSession = AppProps & {
+  pageProps: {
+    session?: Session;
+  };
+};
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -19,18 +26,18 @@ const queryClient = new QueryClient({
 export default function App({
   Component,
   pageProps: { session, ...pageProps },
-}: AppProps) {
+}: AppPropsWithSession) {
   return (
     <SessionProvider session={session}>
-      <QueryClientProvider client={queryClient}>
-        <HeroUIProvider>
+      <HeroUIProvider>
+        <QueryClientProvider client={queryClient}>
           <ToasterProvider>
             <AppShell>
               <Component {...pageProps} />
             </AppShell>
           </ToasterProvider>
-        </HeroUIProvider>
-      </QueryClientProvider>
+        </QueryClientProvider>
+      </HeroUIProvider>
     </SessionProvider>
   );
 }
