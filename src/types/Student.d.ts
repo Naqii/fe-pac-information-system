@@ -1,10 +1,27 @@
+import { DateValue } from "@heroui/react";
+
+interface IRegency {
+  id: string;
+  name: string;
+}
 interface IStudent {
   _id?: string;
   fullName?: string;
-  noTlp?: string;
-  parentId?: string;
-  classId?: string;
   picture?: string | FileList;
+  noTlp?: string;
+  gender?: string;
+  parentName?: string;
+  className?: string;
+  startDate?: string | DateValue;
+  location?: {
+    region: string;
+    address: string;
+  };
 }
 
-export type { IStudent };
+interface IStudentForm extends IStudent {
+  region?: string;
+  address?: string;
+}
+
+export type { IRegency, IStudent, IStudentForm };

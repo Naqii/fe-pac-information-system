@@ -7,6 +7,7 @@ import DataTableStudent from "@/components/ui/DataTableStudent";
 import { COLUMN_LISTS_STUDENT } from "./Student.constant";
 import useChangeUrl from "@/hooks/useChangeUrl";
 import { useDisclosure } from "@heroui/react";
+import AddStudentModal from "./AddStudentModal";
 
 const Student = () => {
   const { push, isReady, query } = useRouter();
@@ -14,7 +15,7 @@ const Student = () => {
     dataStudent,
     isLoadingStudent,
     isRefetchingStudent,
-    refetchStudent,
+    refetchStudents,
     selectedId,
     setSelectedId,
   } = useStudent();
@@ -31,7 +32,7 @@ const Student = () => {
           query: { limit: 8, page: 1, search: "" },
         });
       } else {
-        refetchStudent();
+        refetchStudents();
       }
       setSelectedId("");
     }
@@ -85,6 +86,7 @@ const Student = () => {
           totalPages={dataStudent?.pagination.totalPages}
         />
       )}
+      <AddStudentModal {...addStudentModal} refetchStudents={refetchStudents} />
     </section>
   );
 };

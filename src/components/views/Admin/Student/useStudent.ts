@@ -24,7 +24,7 @@ const useStudent = () => {
     data: dataStudent,
     isLoading: isLoadingStudent,
     isRefetching: isRefetchingStudent,
-    refetch: refetchStudent,
+    refetch: refetchStudents,
   } = useQuery({
     queryKey: [
       "Student",
@@ -42,7 +42,7 @@ const useStudent = () => {
     dataStudent,
     isLoadingStudent,
     isRefetchingStudent,
-    refetchStudent,
+    refetchStudents,
 
     selectedId,
     setSelectedId,
