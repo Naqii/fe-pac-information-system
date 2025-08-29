@@ -25,10 +25,17 @@ const Student = () => {
 
   useEffect(() => {
     if (isReady) {
-      refetchStudent();
+      if (!query.limit || !query.page) {
+        push({
+          pathname: "/admin/student",
+          query: { limit: 8, page: 1, search: "" },
+        });
+      } else {
+        refetchStudent();
+      }
       setSelectedId("");
     }
-  }, [isReady]);
+  }, [isReady, query]);
 
   const renderCell = useCallback(
     (student: Record<string, unknown>, columnKey: Key) => {
@@ -36,7 +43,7 @@ const Student = () => {
       switch (columnKey) {
         case "picture":
           return (
-            <div className="h-[100px] w-[100px] overflow-hidden rounded-full">
+            <div className="h-16 w-16 overflow-hidden rounded-full sm:h-20 sm:w-20 md:h-24 md:w-24">
               <Image
                 src={`${cellValue}`}
                 alt="picture"
@@ -64,7 +71,7 @@ const Student = () => {
   );
 
   return (
-    <section>
+    <section className="overflow-x-auto">
       {Object.keys(query).length > 0 && (
         <DataTableStudent
           tabsContent={currentClass}

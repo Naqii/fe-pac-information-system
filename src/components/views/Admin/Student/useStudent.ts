@@ -1,7 +1,6 @@
 import useChangeUrl from "@/hooks/useChangeUrl";
 import studentServices from "@/services/student.services";
 import { useQuery } from "@tanstack/react-query";
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
@@ -12,7 +11,7 @@ const useStudent = () => {
     useChangeUrl();
 
   const getStudent = async () => {
-    let params = `limit=${currentLimit}&page=${currentPage}&className=${currentClass}`;
+    let params = `className=${currentClass}&limit=${currentLimit}&page=${currentPage}`;
     if (currentSearch) {
       params += `&search=${currentSearch}`;
     }
