@@ -8,6 +8,7 @@ import { COLUMN_LISTS_STUDENT } from "./Student.constant";
 import useChangeUrl from "@/hooks/useChangeUrl";
 import { useDisclosure } from "@heroui/react";
 import AddStudentModal from "./AddStudentModal";
+import DeleteStudentModal from "./DeleteStudentModal";
 
 const Student = () => {
   const { push, isReady, query } = useRouter();
@@ -87,6 +88,12 @@ const Student = () => {
         />
       )}
       <AddStudentModal {...addStudentModal} refetchStudents={refetchStudents} />
+      <DeleteStudentModal
+        {...deleteStudentModal}
+        selectedId={selectedId}
+        setSelectedId={setSelectedId}
+        refetchStudent={refetchStudents}
+      />
     </section>
   );
 };

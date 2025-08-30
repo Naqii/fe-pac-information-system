@@ -14,7 +14,6 @@ import {
   ModalHeader,
   Radio,
   RadioGroup,
-  Select,
   Spinner,
   Textarea,
 } from "@heroui/react";
@@ -36,7 +35,6 @@ const AddStudentModal = (props: PropType) => {
   const {
     control,
     errors,
-    reset,
     handleSubmitForm,
     handleAddStudent,
     isPendingMutateAddStudent,

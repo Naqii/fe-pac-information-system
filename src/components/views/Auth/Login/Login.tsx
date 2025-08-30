@@ -13,24 +13,36 @@ const Login = () => {
     isPendingLogin,
     errors,
   } = useLogin();
+
   return (
-    <div className="flex w-full items-center justify-center lg:flex-row lg:gap-20">
+    <div className="flex w-full items-center justify-center px-4 sm:px-6 lg:px-8">
       {/* Wrapper Card */}
-      <div className="flex w-[800px] rounded-xl">
+      <div className="flex w-full max-w-4xl flex-col rounded-xl lg:flex-row lg:gap-0">
         {/* Left Side - Background Hijau */}
-        <div className="hidden w-1/2 rounded-xl bg-[#006d63] lg:flex" />
-        <Card className="flex w-full lg:w-1/2">
-          <CardBody className="p-6">
-            <h2 className="mb-4 text-2xl font-bold text-[#006d63]">Login</h2>
+        <div className="hidden bg-[#006d63] p-8 text-white lg:flex lg:w-1/2 lg:flex-col lg:items-center lg:justify-center">
+          <h1 className="text-3xl font-bold">Selamat Datang!</h1>
+          <p className="mt-2 text-center text-base text-gray-100">
+            Masuk ke akunmu untuk melanjutkan
+          </p>
+        </div>
+
+        {/* Right Side - Form Login */}
+        <Card className="flex w-full rounded-none border-0 lg:w-1/2 lg:rounded-r-xl">
+          <CardBody className="p-6 sm:p-8">
+            <h2 className="mb-6 text-center text-2xl font-bold text-[#006d63] sm:text-3xl lg:text-left">
+              Login
+            </h2>
+
             {errors.root && (
-              <p className="text-danger mb-2 font-medium">
+              <p className="mb-4 text-center text-sm font-medium text-red-500 lg:text-left">
                 {errors?.root?.message}
               </p>
             )}
+
             <form
               className={cn(
                 "flex flex-col",
-                Object.keys(errors).length > 0 ? "gap-2" : "gap-4",
+                Object.keys(errors).length > 0 ? "gap-3" : "gap-5",
               )}
               onSubmit={handleSubmit(handleLogin)}
             >
@@ -86,11 +98,14 @@ const Login = () => {
                   />
                 )}
               />
+
+              {/* Tombol Login */}
               <Button
                 color="primary"
-                className="bg-[#006d63] text-white hover:bg-[#00564f]"
+                className="mt-2 bg-[#006d63] text-white transition-all duration-300 hover:bg-[#00564f]"
                 size="lg"
                 type="submit"
+                fullWidth
               >
                 {isPendingLogin ? (
                   <Spinner color="white" size="sm" />
