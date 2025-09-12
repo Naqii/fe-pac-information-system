@@ -16,7 +16,7 @@ const useDetailStudent = () => {
     return data.data;
   };
 
-  const { data: dataStudent, refetch: refetchStudent } = useQuery({
+  const { data: dataStudent, refetch: refetchStudents } = useQuery({
     queryKey: ["Student"],
     queryFn: getStudentById,
     enabled: isReady,
@@ -43,7 +43,7 @@ const useDetailStudent = () => {
       });
     },
     onSuccess: () => {
-      refetchStudent();
+      refetchStudents();
       setToaster({
         type: "success",
         message: "Success update student",

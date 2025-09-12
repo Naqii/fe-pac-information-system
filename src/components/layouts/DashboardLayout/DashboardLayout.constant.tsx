@@ -1,5 +1,6 @@
 import { CiUser, CiViewList } from "react-icons/ci";
-import { BsPeople, BsFillJournalBookmarkFill } from "react-icons/bs";
+import { BsPeople, BsJournalBookmark } from "react-icons/bs";
+import { PiChalkboardTeacherLight } from "react-icons/pi";
 
 const SIDEBAR_ADMIN = [
   {
@@ -7,6 +8,12 @@ const SIDEBAR_ADMIN = [
     label: "Student",
     href: "/admin/student",
     icon: <BsPeople />,
+  },
+  {
+    key: "teacher",
+    label: "Teacher",
+    href: "/admin/teacher",
+    icon: <PiChalkboardTeacherLight />,
   },
   {
     key: "attendance",
@@ -18,7 +25,7 @@ const SIDEBAR_ADMIN = [
     key: "learning",
     label: "Learning",
     href: "/admin/learning",
-    icon: <BsFillJournalBookmarkFill />,
+    icon: <BsJournalBookmark />,
   },
   {
     key: "parent",

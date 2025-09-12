@@ -37,7 +37,7 @@ const Student = () => {
       }
       setSelectedId("");
     }
-  }, [isReady, query]);
+  }, [isReady, query, refetchStudents]);
 
   const renderCell = useCallback(
     (student: Record<string, unknown>, columnKey: Key) => {
