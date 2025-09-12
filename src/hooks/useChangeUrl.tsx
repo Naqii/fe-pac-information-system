@@ -15,7 +15,7 @@ const useChangeUrl = () => {
   const currentIsFeatured = router.query.isFeatured;
   const currentClass = Array.isArray(router.query.className)
     ? router.query.className[0]
-    : router.query.className || "PraRemaja";
+    : router.query.className || "68ad2af44b23429a397378bc";
 
   const setUrl = () => {
     router.replace({
@@ -23,7 +23,6 @@ const useChangeUrl = () => {
         limit: currentLimit || LIMIT_DEFAULT,
         page: currentPage || PAGE_DEFAULT,
         search: currentSearch || "",
-        className: currentClass || "",
       },
     });
   };
@@ -128,6 +127,7 @@ const useChangeUrl = () => {
     currentPage,
     currentSearch,
     currentClass,
+
     setUrl,
     handleChangePage,
     handleChangeLimit,

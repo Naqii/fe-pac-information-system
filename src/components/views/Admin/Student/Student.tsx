@@ -29,7 +29,7 @@ const Student = () => {
     if (isReady) {
       if (!query.limit || !query.page) {
         push({
-          pathname: "/admin/student",
+          pathname: `/admin/student/`,
           query: { limit: 8, page: 1, search: "" },
         });
       } else {

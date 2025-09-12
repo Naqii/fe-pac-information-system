@@ -12,10 +12,10 @@ interface IStudent {
   gender?: string;
   parentName?: string;
   className?: string;
-  startDate?: string | DateValue;
+  tanggalLahir?: string | DateValue;
   location?: {
-    region: string;
     address: string;
+    region: string;
   };
 }
 

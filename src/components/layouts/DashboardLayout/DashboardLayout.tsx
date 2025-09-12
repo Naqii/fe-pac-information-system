@@ -14,7 +14,6 @@ interface PropTypes {
 const DashboardLayout = (props: PropTypes) => {
   const { children, description, title, type = "admin" } = props;
   const [open, setOpen] = useState(false);
-
   return (
     <>
       <PageHead title={title} />

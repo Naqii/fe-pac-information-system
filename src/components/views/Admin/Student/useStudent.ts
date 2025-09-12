@@ -26,16 +26,9 @@ const useStudent = () => {
     isRefetching: isRefetchingStudent,
     refetch: refetchStudents,
   } = useQuery({
-    queryKey: [
-      "Student",
-      currentPage,
-      currentLimit,
-      currentSearch,
-      currentClass,
-    ],
+    queryKey: ["Student", currentPage, currentLimit, currentSearch],
     queryFn: () => getStudent(),
-    enabled:
-      router.isReady && !!currentPage && !!currentLimit && !!currentClass,
+    enabled: router.isReady && !!currentPage && !!currentLimit,
   });
 
   return {

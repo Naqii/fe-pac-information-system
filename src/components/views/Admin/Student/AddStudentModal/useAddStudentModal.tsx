@@ -18,11 +18,13 @@ import * as Yup from "yup";
 const schema = Yup.object().shape({
   fullName: Yup.string().required("Please input student name"),
   picture: Yup.mixed<FileList | string>().required("Please input picture"),
-  noTlp: Yup.string().required("Please input phone number"),
+  noTlp: Yup.string()
+    .matches(/^[\d+\-]+$/, "Phone number can only contain numbers, +, and -")
+    .required("Please input phone number"),
   gender: Yup.string().required("Please input gender"),
   parentName: Yup.string().required("Please input parent name"),
   className: Yup.string().required("Please input student class"),
-  startDate: Yup.mixed<DateValue>().required("Please select birthdate"),
+  tanggalLahir: Yup.mixed<DateValue>().required("Please select birthdate"),
   region: Yup.string().required("Please select Region"),
   address: Yup.string().required("Please input address"),
 });
@@ -106,7 +108,7 @@ const useAddStudentModal = () => {
   };
 
   const addStudent = async (payload: IStudent) => {
-    const res = await studentServices.addEvent(payload);
+    const res = await studentServices.addStudent(payload);
     return res;
   };
 
@@ -134,7 +136,7 @@ const useAddStudentModal = () => {
   const handleAddStudent = (data: IStudentForm) => {
     const payload = {
       ...data,
-      startDate: toDateStandard(data.startDate as DateValue),
+      tanggalLahir: toDateStandard(data.tanggalLahir as DateValue),
       location: {
         address: `${data.address}`,
         region: `${data.region}`,

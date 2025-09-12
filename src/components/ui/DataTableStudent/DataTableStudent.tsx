@@ -75,9 +75,9 @@ const DataTableStudent = (props: PropTypes) => {
             variant="solid"
             aria-label="Option Class"
           >
-            <Tab key="PraRemaja" title="PraRemaja" />
-            <Tab key="Remaja" title="Remaja" />
-            <Tab key="Usman" title="Usman" />
+            <Tab key="68ad2af44b23429a397378bc" title="PraRemaja" />
+            <Tab key="68ad2af84b23429a397378bf" title="Remaja" />
+            <Tab key="68ad2b054b23429a397378c2" title="Usman" />
           </Tabs>
         )}
         {showSearch && (

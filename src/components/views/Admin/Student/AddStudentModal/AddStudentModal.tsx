@@ -68,7 +68,7 @@ const AddStudentModal = (props: PropType) => {
     isPendingMutateDeleteFile;
 
   useEffect(() => {
-    setValue("startDate", now(getLocalTimeZone()));
+    setValue("tanggalLahir", now(getLocalTimeZone()));
   }, [onOpenChange]);
 
   return (
@@ -106,7 +106,6 @@ const AddStudentModal = (props: PropType) => {
                   render={({ field }) => (
                     <Input
                       {...field}
-                      autoFocus
                       label="Nomor Telepon"
                       variant="bordered"
                       isInvalid={errors.noTlp !== undefined}
@@ -176,7 +175,7 @@ const AddStudentModal = (props: PropType) => {
                   )}
                 />
                 <Controller
-                  name="startDate"
+                  name="tanggalLahir"
                   control={control}
                   render={({ field }) => (
                     <DatePicker
@@ -186,8 +185,8 @@ const AddStudentModal = (props: PropType) => {
                       hideTimeZone
                       showMonthAndYearPickers
                       granularity="day"
-                      isInvalid={errors.startDate !== undefined}
-                      errorMessage={errors.startDate?.message}
+                      isInvalid={errors.tanggalLahir !== undefined}
+                      errorMessage={errors.tanggalLahir?.message}
                     />
                   )}
                 />

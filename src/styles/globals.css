@@ -1,30 +1,19 @@
 @import "tailwindcss";
-@plugin "./hero.ts";
 
+/* Jika menggunakan pendekatan CSS-first Tailwind v4 (tanpa tailwind.config.js): */
+@layer theme, base, components, utilities;
+
+@plugin './hero.ts';
 @source '../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
-@custom-variant dark (&:is(.dark *));
 
-/* :root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Opsi: definisikan variabel tema (warna, radius, dll.) via @theme */
+@theme {
+  --color-primary: #2563eb;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #475569;
+  --color-secondary-foreground: #ffffff;
+  --color-success: #10b981;
+  --color-danger: #ef4444;
+  --color-warning: #facc15;
+  --radius-lg: 1rem;
 }
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #006d63;
-  }
-} */
-
-/* body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-} */
