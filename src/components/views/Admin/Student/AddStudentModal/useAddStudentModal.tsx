@@ -101,8 +101,6 @@ const useAddStudentModal = () => {
     enabled: searchRegency !== "",
   });
 
-  console.log(searchRegency);
-
   const handleSearchRegion = (region: string) => {
     debounce(() => setSearchRegency(region), DELAY);
   };
