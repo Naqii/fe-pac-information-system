@@ -10,6 +10,8 @@ import {
   ModalContent,
   ModalFooter,
   ModalHeader,
+  Radio,
+  RadioGroup,
   Spinner,
 } from "@heroui/react";
 import { Controller } from "react-hook-form";
@@ -142,6 +144,23 @@ const AddTeacherModal = (props: PropType) => {
                       isInvalid={errors.bidang !== undefined}
                       errorMessage={errors.bidang?.message}
                     />
+                  )}
+                />
+                <Controller
+                  name="gender"
+                  control={control}
+                  render={({ field }) => (
+                    <RadioGroup
+                      {...field}
+                      label="Jenis Kelamin"
+                      isInvalid={errors.gender !== undefined}
+                      errorMessage={errors.gender?.message}
+                      orientation="horizontal"
+                      color="success"
+                    >
+                      <Radio value="Laki-laki">Laki - laki</Radio>
+                      <Radio value="Perempuan">Perempuan</Radio>
+                    </RadioGroup>
                   )}
                 />
                 <Controller

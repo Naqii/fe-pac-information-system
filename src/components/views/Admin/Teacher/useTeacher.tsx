@@ -11,7 +11,9 @@ const useTeacher = () => {
 
   const getTeacher = async () => {
     let params = `limit=${currentLimit}&page=${currentPage}`;
-    if (currentSearch) params += `$search=${currentSearch}`;
+    if (currentSearch) {
+      params += `&search=${currentSearch}`;
+    }
     const res = await teacherService.getTeacher(params);
     const { data } = res;
     return data;

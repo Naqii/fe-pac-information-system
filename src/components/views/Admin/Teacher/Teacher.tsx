@@ -78,7 +78,7 @@ const Teacher = () => {
           columns={COLUMN_LISTS_TEACHER}
           emptyContent="Teacher is Empty"
           isLoading={isLoadingTeacher || isRefetchingTeacher}
-          data={dataTeacher?.data || []}
+          data={dataTeacher?.data}
           onClickButtonTopContent={addTeacherModal.onOpen}
           buttonTopContentLabel="Create Teacher"
           renderCell={renderCell}

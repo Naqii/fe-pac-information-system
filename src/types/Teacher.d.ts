@@ -8,6 +8,7 @@ interface ITeacher {
   endDate?: string | DateValue;
   noTelp?: string;
   bidang?: string;
+  gender?: string;
   pendidikan?: string;
   slug?: string;
 }

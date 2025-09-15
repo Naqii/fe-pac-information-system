@@ -19,6 +19,7 @@ const schema = Yup.object().shape({
     .matches(/^[\d+\-]+$/, "Phone number can only contain numbers, +, and -")
     .required("Please input phone number"),
   bidang: Yup.string().required("Please input bidang"),
+  gender: Yup.string().required("Please input gender"),
   pendidikan: Yup.string().required("Please input highest level of education"),
   slug: Yup.string().required("Please input slug"),
 });
