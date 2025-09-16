@@ -6,6 +6,7 @@ const endpoint = {
   REGION: "/regions",
   PARENT: "/parent",
   CLASS: "/class",
+  LEARNING: "/learning",
 };
 
 export default endpoint;

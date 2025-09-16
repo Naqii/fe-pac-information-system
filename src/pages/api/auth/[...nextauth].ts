@@ -7,7 +7,7 @@ import authServices from "@/services/auth.services";
 export default NextAuth({
   session: {
     strategy: "jwt",
-    maxAge: 60 * 60 * 1,
+    maxAge: 60 * 60 * 12,
   },
   secret: environment.AUTH_SECRET,
   providers: [
