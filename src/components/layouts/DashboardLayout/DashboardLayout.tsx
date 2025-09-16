@@ -17,7 +17,7 @@ const DashboardLayout = (props: PropTypes) => {
   return (
     <>
       <PageHead title={title} />
-      <div className="max-w-screen-3xl flex flex-col lg:flex-row">
+      <div className="max-w-screen-3xl 3xl-contaner flex">
         {/* Sidebar */}
         <DashboardLayoutSidebar
           sidebarItems={type === "admin" ? SIDEBAR_ADMIN : SIDEBAR_PARENT}
@@ -25,30 +25,27 @@ const DashboardLayout = (props: PropTypes) => {
         />
 
         {/* Main Content */}
-        <div className="flex flex-1 flex-col">
+        <div className="h-screen w-full overflow-y-auto px-8">
           {/* Top Navbar */}
           <Navbar
-            isMenuOpen={open}
-            onMenuOpenChange={setOpen}
-            className="flex justify-between bg-transparent px-6"
+            className="flex justify-between bg-transparent px-0"
             isBlurred={false}
-            classNames={{ wrapper: "px-0" }}
+            classNames={{ wrapper: "p-0" }}
             position="static"
           >
-            <h1 className="mt-3 text-3xl font-bold">{title}</h1>
+            <h1 className="text-3xl font-bold">{title}</h1>
             {/* Title & Menu Toggle */}
             <NavbarMenuToggle
               aria-label={open ? "Close menu" : "Open menu"}
+              onClick={() => setOpen(!open)}
               className="block lg:hidden"
             />
           </Navbar>
           {/* Page Description */}
-          {description && (
-            <p className="mt-3 px-6 text-sm text-gray-500">{description}</p>
-          )}
+          <p className="mt-3 mb-3 text-sm text-gray-500">{description}</p>
 
           {/* Page Content */}
-          <main className="flex-1 p-6">{children}</main>
+          {children}
         </div>
       </div>
     </>

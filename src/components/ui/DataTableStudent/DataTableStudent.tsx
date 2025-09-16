@@ -161,6 +161,7 @@ const DataTableStudent = (props: PropTypes) => {
 
   return (
     <Table
+      isStriped
       bottomContent={BottomContent}
       bottomContentPlacement="outside"
       aria-label="Data Table"
