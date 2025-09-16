@@ -7,7 +7,6 @@ const DetailTeacher = () => {
   const {
     dataTeacher,
 
-    handleUpdateInfo,
     handleUpdateTeacher,
 
     isPendingMutateUpdateTeacher,
