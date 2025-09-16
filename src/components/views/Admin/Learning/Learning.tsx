@@ -9,12 +9,13 @@ import { COLUMN_LISTS_LEARNING } from "./Learning.constant";
 import DeleteLearningModal from "./DeleteLearningModal";
 import AddLearningModal from "./AddLearningModal/AddLearningModal";
 import useChangeUrl from "@/hooks/useChangeUrl";
+// import { ITeacher } from "@/types/Teacher";
 
 const Learning = () => {
   const { push, isReady, query } = useRouter();
   const {
     dataLearning,
-
+    // dataTeacher,
     isLoadingLearning,
     isRefetchingLearning,
     refetchLearnings,
@@ -34,10 +35,22 @@ const Learning = () => {
   const addLearningModal = useDisclosure();
   const deleteLearningModal = useDisclosure();
 
+  // console.log("dataTeacher:", dataTeacher);
+
   const renderCell = useCallback(
     (learning: Record<string, unknown>, columnKey: Key) => {
       const cellValue = learning[columnKey as keyof typeof learning];
       switch (columnKey) {
+        // case "teacherId": {
+        // console.log("cellValue:", cellValue);
+        // console.log("dataTeacher:", dataTeacher);
+        // const teacherId = cellValue as string;
+        // console.log("dataTeacherId:", teacherId);
+        // const teacher = dataTeacher?.data?.find(
+        //     (t: ITeacher) => t._id === teacherId,
+        //   );
+        //   return teacher ? teacher.teacherName : "-";
+        // }
         case "actions":
           return (
             <DropDownAction
@@ -54,7 +67,7 @@ const Learning = () => {
           return cellValue as ReactNode;
       }
     },
-    [push],
+    [push, deleteLearningModal, setSelectedId],
   );
 
   return (
