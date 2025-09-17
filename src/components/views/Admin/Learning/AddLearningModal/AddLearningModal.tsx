@@ -15,7 +15,6 @@ import {
   Textarea,
 } from "@heroui/react";
 import { Controller } from "react-hook-form";
-import { ILearning } from "@/types/Learning";
 import { ITeacher } from "@/types/Teacher";
 
 interface PropType {
@@ -30,13 +29,12 @@ const AddLearningModal = (props: PropType) => {
   const {
     control,
     errors,
-    reset,
+
     handleSubmitForm,
     handleAddLearning,
     isPendingMutateAddLearning,
     isSuccessMutateAddLearning,
 
-    setValue,
     dataTeacher,
   } = useAddLearningModal();
 
@@ -55,7 +53,7 @@ const AddLearningModal = (props: PropType) => {
       isOpen={isOpen}
       placement="center"
       scrollBehavior="inside"
-      onClose={() => onClose}
+      onClose={() => onClose()}
     >
       <form onSubmit={handleSubmitForm(handleAddLearning)}>
         <ModalContent className="mt-4">
@@ -134,7 +132,7 @@ const AddLearningModal = (props: PropType) => {
             <Button
               color="danger"
               variant="flat"
-              onPress={() => onClose}
+              onPress={() => onClose()}
               disabled={disabledSubmit}
             >
               Cancel

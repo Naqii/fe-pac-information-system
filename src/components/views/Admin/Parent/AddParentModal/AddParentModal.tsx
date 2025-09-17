@@ -55,7 +55,7 @@ const AddParentModal = (props: PropType) => {
       isOpen={isOpen}
       placement="center"
       scrollBehavior="inside"
-      onClose={() => onClose}
+      onClose={() => onClose()}
     >
       <form onSubmit={handleSubmitForm(handleAddParent)}>
         <ModalContent className="mt-4">
@@ -169,7 +169,7 @@ const AddParentModal = (props: PropType) => {
             <Button
               color="danger"
               variant="flat"
-              onPress={() => onClose}
+              onPress={() => onClose()}
               disabled={disabledSubmit}
             >
               Cancel

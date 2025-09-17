@@ -41,6 +41,7 @@ const DeleteParentModal = (props: PropTypes) => {
       refetchParent();
       setSelectedId("");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSuccessMutateDeleteParent, onClose, refetchParent]);
 
   return (
