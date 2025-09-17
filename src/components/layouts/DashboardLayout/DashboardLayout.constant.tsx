@@ -16,12 +16,6 @@ const SIDEBAR_ADMIN = [
     icon: <PiChalkboardTeacherLight />,
   },
   {
-    key: "attendance",
-    label: "Attendance",
-    href: "/admin/attendance",
-    icon: <CiViewList />,
-  },
-  {
     key: "learning",
     label: "Learning",
     href: "/admin/learning",
@@ -32,6 +26,12 @@ const SIDEBAR_ADMIN = [
     label: "Parent",
     href: "/admin/parent",
     icon: <BsPeople />,
+  },
+  {
+    key: "attendance",
+    label: "Attendance",
+    href: "/admin/attendance",
+    icon: <CiViewList />,
   },
 ];
 

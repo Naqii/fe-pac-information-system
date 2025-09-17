@@ -7,11 +7,11 @@ const DetailStudent = () => {
   const {
     dataStudent,
 
-    handleUpdateInfo,
     handleUpdateStudent,
 
     isPendingMutateUpdateStudent,
     isSuccessMutateUpdateStuent,
+
     dataDefaultRegion,
     isPendingDefaultRegion,
   } = useDetailStudent();
