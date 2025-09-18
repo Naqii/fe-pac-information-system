@@ -57,6 +57,7 @@ const AddTeacherModal = (props: PropType) => {
 
   useEffect(() => {
     setValue("startDate", now(getLocalTimeZone()));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onOpenChange]);
 
   return (
@@ -195,7 +196,7 @@ const AddTeacherModal = (props: PropType) => {
             <Controller
               name="picture"
               control={control}
-              render={({ field: { onChange, value, ...field } }) => (
+              render={({ field: { onChange, ...field } }) => (
                 <InputFile
                   {...field}
                   onDelete={() => handleDeletePicture(onChange)}

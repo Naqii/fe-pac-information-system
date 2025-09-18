@@ -37,7 +37,6 @@ const AddParentModal = (props: PropType) => {
 
     dataRegion,
     handleSearchRegion,
-    searchRegency,
   } = useAddParentModal();
 
   useEffect(() => {
@@ -127,11 +126,8 @@ const AddParentModal = (props: PropType) => {
                   render={({ field: { onChange, ...field } }) => (
                     <Autocomplete
                       {...field}
-                      defaultItems={
-                        dataRegion?.data.data && searchRegency !== ""
-                          ? dataRegion?.data.data
-                          : []
-                      }
+                      items={dataRegion?.data.data ?? []}
+                      selectedKey={field.value || null}
                       label="City"
                       variant="bordered"
                       onInputChange={(search) => handleSearchRegion(search)}

@@ -44,7 +44,6 @@ const InfoTab = (props: PropType) => {
     resetUpdateInfo,
     setValueUpdateInfo,
     handleSearchRegion,
-    searchRegency,
 
     dataClass,
     dataParent,
@@ -232,11 +231,8 @@ const InfoTab = (props: PropType) => {
                 render={({ field: { onChange, ...field } }) => (
                   <Autocomplete
                     {...field}
-                    defaultItems={
-                      dataRegion?.data.data && searchRegency !== ""
-                        ? dataRegion?.data.data
-                        : []
-                    }
+                    items={dataRegion?.data.data ?? []}
+                    selectedKey={dataRegion?.data.data}
                     defaultInputValue={dataDefaultRegion}
                     label="City"
                     variant="bordered"

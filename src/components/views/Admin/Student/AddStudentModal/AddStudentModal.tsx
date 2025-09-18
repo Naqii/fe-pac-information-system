@@ -51,7 +51,6 @@ const AddStudentModal = (props: PropType) => {
     dataClass,
     dataParent,
     dataRegion,
-    searchRegency,
     handleSearchRegion,
   } = useAddStudentModal();
 
@@ -69,6 +68,7 @@ const AddStudentModal = (props: PropType) => {
 
   useEffect(() => {
     setValue("tanggalLahir", now(getLocalTimeZone()));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onOpenChange]);
 
   return (
@@ -196,11 +196,8 @@ const AddStudentModal = (props: PropType) => {
                   render={({ field: { onChange, ...field } }) => (
                     <Autocomplete
                       {...field}
-                      defaultItems={
-                        dataRegion?.data.data && searchRegency !== ""
-                          ? dataRegion?.data.data
-                          : []
-                      }
+                      items={dataRegion?.data.data ?? []}
+                      selectedKey={field.value || null}
                       label="City"
                       variant="bordered"
                       onInputChange={(search) => handleSearchRegion(search)}
@@ -237,7 +234,7 @@ const AddStudentModal = (props: PropType) => {
             <Controller
               name="picture"
               control={control}
-              render={({ field: { onChange, value, ...field } }) => (
+              render={({ field: { onChange, ...field } }) => (
                 <InputFile
                   {...field}
                   onDelete={() => handleDeletePicture(onChange)}
