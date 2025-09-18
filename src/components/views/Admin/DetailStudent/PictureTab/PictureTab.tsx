@@ -40,6 +40,7 @@ const PictureTab = (props: PropType) => {
     if (isSuccessUpdate) {
       resetUpdatePicture();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSuccessUpdate]);
 
   return (
@@ -74,7 +75,7 @@ const PictureTab = (props: PropType) => {
           <Controller
             name="picture"
             control={controlUpdatePicture}
-            render={({ field: { onChange, value, ...field } }) => (
+            render={({ field: { onChange, ...field } }) => (
               <InputFile
                 {...field}
                 onDelete={() => handleDeletePicture(onChange)}
