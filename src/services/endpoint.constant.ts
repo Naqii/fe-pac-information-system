@@ -7,6 +7,7 @@ const endpoint = {
   PARENT: "/parent",
   CLASS: "/class",
   LEARNING: "/learning",
+  ATTENDANCE: "/attendance",
 };
 
 export default endpoint;

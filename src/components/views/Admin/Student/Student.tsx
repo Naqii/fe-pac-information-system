@@ -37,6 +37,7 @@ const Student = () => {
       }
       setSelectedId("");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isReady, query, refetchStudents]);
 
   const renderCell = useCallback(
@@ -69,6 +70,7 @@ const Student = () => {
           return cellValue as ReactNode;
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [push],
   );
 
