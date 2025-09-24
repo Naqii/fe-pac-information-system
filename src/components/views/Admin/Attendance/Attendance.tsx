@@ -3,11 +3,11 @@ import useAttendance from "./useAttendance";
 import { Tooltip, useDisclosure } from "@heroui/react";
 import useChangeUrl from "@/hooks/useChangeUrl";
 import { Key, useCallback, useEffect } from "react";
-import DataTableStudent from "@/components/ui/DataTableStudent";
 import { COLUMN_LISTS_ATTENDANCE } from "./Attendance.constant";
 import { MdDelete, MdEditSquare } from "react-icons/md";
 import DeleteAttendanceModal from "./DeleteAttendanceModal";
 import AddAttendanceModal from "./AddAttendanceModal";
+import DataTableAttendance from "@/components/ui/DataTableAttendance/DataTableStudent";
 
 const Attendance = () => {
   const { push, isReady, query } = useRouter();
@@ -75,7 +75,7 @@ const Attendance = () => {
   return (
     <section className="overflow-x-auto">
       {Object.keys(query).length > 0 && (
-        <DataTableStudent
+        <DataTableAttendance
           tabsContent={currentClass}
           columns={COLUMN_LISTS_ATTENDANCE}
           emptyContent="Attendance is Empty"

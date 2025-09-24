@@ -53,6 +53,7 @@ const Student = () => {
                 width={100}
                 height={100}
                 className="object-cover"
+                priority
               />
             </div>
           );

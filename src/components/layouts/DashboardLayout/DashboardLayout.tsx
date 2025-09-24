@@ -42,7 +42,7 @@ const DashboardLayout = (props: PropTypes) => {
             />
           </Navbar>
           {/* Page Description */}
-          <p className="mt-3 mb-3 text-sm text-gray-500">{description}</p>
+          <h1 className="mt-3 mb-3 text-sm text-gray-500">{description}</h1>
 
           {/* Page Content */}
           {children}

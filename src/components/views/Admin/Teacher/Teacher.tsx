@@ -36,6 +36,7 @@ const Teacher = () => {
       }
       setSelectedId("");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isReady, query, refetchTeachers]);
 
   const renderCell = useCallback(
@@ -51,6 +52,7 @@ const Teacher = () => {
                 width={100}
                 height={100}
                 className="object-cover"
+                priority
               />
             </div>
           );
@@ -68,6 +70,7 @@ const Teacher = () => {
           return cellValue as ReactNode;
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [push],
   );
 

@@ -1,6 +1,5 @@
 import { ToasterContext } from "@/contexts/ToasterContext";
 import attendanceServices from "@/services/attendance.services";
-import classServices from "@/services/class.services";
 import studentServices from "@/services/student.services";
 import { IAttendance } from "@/types/Attendance";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -38,12 +37,6 @@ const useAddAttendanceModal = () => {
     enabled: router.isReady,
   });
 
-  const { data: dataClass } = useQuery({
-    queryKey: ["Class"],
-    queryFn: () => classServices.getClass(),
-    enabled: router.isReady,
-  });
-
   const addAttendance = async (payload: IAttendance) => {
     const res = await attendanceServices.addAttendance(payload);
     return res;
@@ -78,7 +71,6 @@ const useAddAttendanceModal = () => {
   };
 
   return {
-    dataClass,
     dataStudent,
 
     handleOnClose,

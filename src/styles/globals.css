@@ -3,7 +3,7 @@
 /* Jika menggunakan pendekatan CSS-first Tailwind v4 (tanpa tailwind.config.js): */
 @layer theme, base, components, utilities;
 
-@plugin './hero.ts';
+@plugin '../hero.ts';
 @source '../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
 
 /* Opsi: definisikan variabel tema (warna, radius, dll.) via @theme */

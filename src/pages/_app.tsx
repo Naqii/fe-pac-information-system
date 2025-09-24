@@ -6,7 +6,7 @@ import * as React from "react";
 import { SessionProvider } from "next-auth/react";
 import { ToasterProvider } from "@/contexts/ToasterContext";
 import AppShell from "@/components/commons/AppShell/AppShell";
-import { Session } from "inspector/promises";
+import { Session } from "next-auth";
 
 type AppPropsWithSession = AppProps & {
   pageProps: {
