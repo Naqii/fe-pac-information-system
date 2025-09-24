@@ -7,6 +7,7 @@ import DataTableStudent from "@/components/ui/DataTableStudent";
 import { COLUMN_LISTS_ATTENDANCE } from "./Attendance.constant";
 import { MdDelete, MdEditSquare } from "react-icons/md";
 import DeleteAttendanceModal from "./DeleteAttendanceModal";
+import AddAttendanceModal from "./AddAttendanceModal";
 
 const Attendance = () => {
   const { push, isReady, query } = useRouter();
@@ -86,7 +87,10 @@ const Attendance = () => {
           totalPages={dataAttendance?.pagination.totalPages}
         />
       )}
-      {/* <AddAttendanceModal {...addAttendanceModal} refetchAttendances={refetchAttendances} />*/}
+      <AddAttendanceModal
+        {...addAttendanceModal}
+        refetchAttendances={refetchAttendances}
+      />
       <DeleteAttendanceModal
         {...deleteAttendanceModal}
         selectedId={selectedId}
