@@ -8,6 +8,7 @@ import { MdDelete, MdEditSquare } from "react-icons/md";
 import DeleteAttendanceModal from "./DeleteAttendanceModal";
 import AddAttendanceModal from "./AddAttendanceModal";
 import DataTableAttendance from "@/components/ui/DataTableAttendance/DataTableStudent";
+import UpsertAttendanceModal from "./UpsertAttendanceModal";
 
 const Attendance = () => {
   const { push, isReady, query } = useRouter();
@@ -23,6 +24,7 @@ const Attendance = () => {
 
   const addAttendanceModal = useDisclosure();
   const deleteAttendanceModal = useDisclosure();
+  const upsertAttendanceModal = useDisclosure();
   const { currentClass } = useChangeUrl();
 
   useEffect(() => {
@@ -49,7 +51,13 @@ const Attendance = () => {
             <div className="relative flex items-center gap-3">
               <Tooltip content="Edit user">
                 <span className="cursor-pointer rounded bg-[#006d63] text-lg active:opacity-50">
-                  <MdEditSquare className="text-white" />
+                  <MdEditSquare
+                    className="text-white"
+                    onClick={() => {
+                      setSelectedId(`${attendance._id}`);
+                      upsertAttendanceModal.onOpen();
+                    }}
+                  />
                 </span>
               </Tooltip>
               <Tooltip color="danger" content="Delete user">
@@ -90,6 +98,10 @@ const Attendance = () => {
       <AddAttendanceModal
         {...addAttendanceModal}
         refetchAttendances={refetchAttendances}
+      />
+      <UpsertAttendanceModal
+        {...upsertAttendanceModal}
+        selectedId={selectedId}
       />
       <DeleteAttendanceModal
         {...deleteAttendanceModal}

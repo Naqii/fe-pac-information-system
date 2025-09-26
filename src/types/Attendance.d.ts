@@ -5,7 +5,7 @@ interface IAttendance {
   fullName?: string;
   className?: string;
   attendance?: {
-    date: string | DateValue;
+    date: string;
     status: string;
     description: string;
   };
