@@ -1,3 +1,3 @@
-import DataTableStudent from "./DataTableStudent";
+import DataTableAttendance from "./DataTableAttendance";
 
-export default DataTableStudent;
+export default DataTableAttendance;

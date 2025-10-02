@@ -7,7 +7,7 @@ import { COLUMN_LISTS_ATTENDANCE } from "./Attendance.constant";
 import { MdDelete, MdEditSquare } from "react-icons/md";
 import DeleteAttendanceModal from "./DeleteAttendanceModal";
 import AddAttendanceModal from "./AddAttendanceModal";
-import DataTableAttendance from "@/components/ui/DataTableAttendance/DataTableStudent";
+import DataTableAttendance from "@/components/ui/DataTableAttendance/DataTableAttendance";
 import UpsertAttendanceModal from "./UpsertAttendanceModal";
 
 const Attendance = () => {
@@ -81,7 +81,7 @@ const Attendance = () => {
   );
 
   return (
-    <section className="overflow-x-auto">
+    <section>
       {Object.keys(query).length > 0 && (
         <DataTableAttendance
           tabsContent={currentClass}

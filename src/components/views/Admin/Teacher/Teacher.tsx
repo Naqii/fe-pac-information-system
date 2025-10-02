@@ -75,7 +75,7 @@ const Teacher = () => {
   );
 
   return (
-    <section className="overflow-x-auto">
+    <section>
       {Object.keys(query).length > 0 && (
         <DataTable
           columns={COLUMN_LISTS_TEACHER}

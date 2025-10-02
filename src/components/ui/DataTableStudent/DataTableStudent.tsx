@@ -1,6 +1,5 @@
 import { LIMIT_LIST } from "@/constants/list.constants";
 import useChangeUrl from "@/hooks/useChangeUrl";
-import { cn } from "@/utils/cn";
 import {
   Button,
   Input,
@@ -160,49 +159,49 @@ const DataTableStudent = (props: PropTypes) => {
   ]);
 
   return (
-    <Table
-      isStriped
-      bottomContent={BottomContent}
-      bottomContentPlacement="outside"
-      aria-label="Data Table"
-      classNames={{
-        base: "max-w-full transition-all",
-        wrapper: cn({ "overflow-x-hidden": isLoading }),
-      }}
-      topContent={TopContent}
-      topContentPlacement="outside"
-    >
-      <TableHeader columns={columns}>
-        {(column) => (
-          <TableColumn key={column.uid as Key}>
-            {(column.name ?? "Unnamed Column") as string}
-          </TableColumn>
-        )}
-      </TableHeader>
-      <TableBody
-        emptyContent={emptyContent}
-        isLoading={isLoading}
-        items={displayedData}
-        loadingContent={
-          <div className="bg-foreground-700/30 flex h-full w-full items-center justify-center backdrop-blur-sm">
-            <Spinner
-              color="default"
-              classNames={{
-                circle1: "border-[#006d63]",
-              }}
-            />
-          </div>
-        }
+    <section>
+      <Table
+        bottomContent={BottomContent}
+        bottomContentPlacement="outside"
+        aria-label="Data Table"
+        topContent={TopContent}
+        topContentPlacement="outside"
+        classNames={{
+          wrapper: "overflow-x-auto",
+        }}
       >
-        {(item) => (
-          <TableRow key={item._id as Key}>
-            {(columnKey) => (
-              <TableCell>{renderCell(item, columnKey)}</TableCell>
-            )}
-          </TableRow>
-        )}
-      </TableBody>
-    </Table>
+        <TableHeader columns={columns}>
+          {(column) => (
+            <TableColumn key={column.uid as Key}>
+              {(column.name ?? "Unnamed Column") as string}
+            </TableColumn>
+          )}
+        </TableHeader>
+        <TableBody
+          emptyContent={emptyContent}
+          isLoading={isLoading}
+          items={displayedData}
+          loadingContent={
+            <div className="bg-foreground-700/30 flex h-full w-full items-center justify-center backdrop-blur-sm">
+              <Spinner
+                color="default"
+                classNames={{
+                  circle1: "border-[#006d63]",
+                }}
+              />
+            </div>
+          }
+        >
+          {(item) => (
+            <TableRow key={item._id as Key}>
+              {(columnKey) => (
+                <TableCell>{renderCell(item, columnKey)}</TableCell>
+              )}
+            </TableRow>
+          )}
+        </TableBody>
+      </Table>
+    </section>
   );
 };
 

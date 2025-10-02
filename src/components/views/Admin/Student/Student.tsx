@@ -76,7 +76,7 @@ const Student = () => {
   );
 
   return (
-    <section className="overflow-x-auto">
+    <section>
       {Object.keys(query).length > 0 && (
         <DataTableStudent
           tabsContent={currentClass}

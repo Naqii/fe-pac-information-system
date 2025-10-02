@@ -3,6 +3,8 @@ import useChangeUrl from "@/hooks/useChangeUrl";
 import { cn } from "@/utils/cn";
 import {
   Button,
+  DatePicker,
+  DateValue,
   Input,
   Pagination,
   Select,
@@ -17,9 +19,10 @@ import {
   TableRow,
   Tabs,
 } from "@heroui/react";
-import { Key, ReactNode, useMemo } from "react";
+import { Key, ReactNode, useMemo, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { useTableDataAttendance } from "./useTableDataAttendance";
+import { useRouter } from "next/router";
 
 interface PropTypes {
   buttonTopContentLabel?: string;
@@ -34,9 +37,11 @@ interface PropTypes {
   showClass?: string;
   totalPages: number;
   tabsContent: string;
+  buttonBotRecap?: string;
 }
 
 const DataTableAttendance = (props: PropTypes) => {
+  const router = useRouter();
   const {
     currentLimit,
     currentPage,
@@ -61,9 +66,23 @@ const DataTableAttendance = (props: PropTypes) => {
     showLimit = true,
     showSearch = true,
     tabsContent = true,
+    buttonBotRecap = true,
   } = props;
 
   const { displayedData } = useTableDataAttendance(data, isLoading ?? false);
+  const [selectedDate, setSelectedDate] = useState<DateValue | null>(null);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const handleGoToRecap = () => {
+    if (!currentClass || !selectedDate) return;
+
+    const month = selectedDate.month;
+    const year = selectedDate.year;
+
+    router.push(
+      `/admin/attendance/recap?className=${currentClass}&month=${month}&year=${year}`,
+    );
+  };
 
   const TopContent = useMemo(() => {
     return (
@@ -115,7 +134,7 @@ const DataTableAttendance = (props: PropTypes) => {
 
   const BottomContent = useMemo(() => {
     return (
-      <div className="flex items-center justify-center lg:justify-between">
+      <div className="flex items-center gap-2">
         {showLimit && (
           <Select
             className="hidden max-w-36 lg:block"
@@ -131,6 +150,25 @@ const DataTableAttendance = (props: PropTypes) => {
               <SelectItem key={item.value}>{item.label}</SelectItem>
             ))}
           </Select>
+        )}
+        {buttonBotRecap && (
+          <div className="flex items-center gap-2">
+            <DatePicker
+              variant="flat"
+              hideTimeZone
+              showMonthAndYearPickers
+              onChange={(date) => setSelectedDate(date)}
+              aria-label="Select month for recap"
+            />
+            <Button
+              size="md"
+              className="bg-[#006d63] text-white"
+              onPress={handleGoToRecap}
+              isDisabled={!selectedDate}
+            >
+              Recap
+            </Button>
+          </div>
         )}
         {totalPages > 1 && (
           <Pagination
@@ -154,6 +192,9 @@ const DataTableAttendance = (props: PropTypes) => {
     showLimit,
     currentLimit,
     handleChangeLimit,
+    buttonBotRecap,
+    handleGoToRecap,
+    selectedDate,
     totalPages,
     currentPage,
     handleChangePage,

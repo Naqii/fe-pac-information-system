@@ -17,6 +17,9 @@ const useChangeUrl = () => {
     ? router.query.className[0]
     : router.query.className || "68ad2af44b23429a397378bc";
 
+  const currentmonth = router.query.month;
+  const currentyear = router.query.year;
+
   const setUrl = () => {
     router.replace({
       query: {
@@ -127,6 +130,8 @@ const useChangeUrl = () => {
     currentPage,
     currentSearch,
     currentClass,
+    currentmonth,
+    currentyear,
 
     setUrl,
     handleChangePage,
