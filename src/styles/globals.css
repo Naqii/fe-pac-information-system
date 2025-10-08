@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "handsontable/dist/handsontable.full.min.css";
 
 /* Jika menggunakan pendekatan CSS-first Tailwind v4 (tanpa tailwind.config.js): */
 @layer theme, base, components, utilities;
@@ -16,4 +17,16 @@
   --color-danger: #ef4444;
   --color-warning: #facc15;
   --radius-lg: 1rem;
+}
+
+/* file: globals.css */
+.hot-container {
+  position: relative;
+  z-index: 1; /* biar table tetap di bawah sidebar */
+}
+
+/* header Handsontable biasanya z-index tinggi → turunkan */
+.hot-container .ht_clone_top,
+.hot-container .ht_clone_inline_start {
+  z-index: 0 !important;
 }

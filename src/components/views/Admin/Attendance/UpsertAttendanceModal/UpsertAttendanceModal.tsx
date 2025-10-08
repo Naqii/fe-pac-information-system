@@ -12,7 +12,6 @@ import {
   Select,
   SelectItem,
   Spinner,
-  Textarea,
 } from "@heroui/react";
 import { Controller } from "react-hook-form";
 
@@ -93,20 +92,6 @@ const UpsertAttendanceModal = (props: PropType) => {
                       <SelectItem key="izin">Izin</SelectItem>
                       <SelectItem key="absen">Tanpa Keterangan</SelectItem>
                     </Select>
-                  )}
-                />
-                <Controller
-                  name="description"
-                  control={control}
-                  render={({ field }) => (
-                    <Textarea
-                      {...field}
-                      label="description"
-                      variant="bordered"
-                      isInvalid={errors.description !== undefined}
-                      errorMessage={errors.description?.message}
-                      className="mb-2"
-                    />
                   )}
                 />
               </div>

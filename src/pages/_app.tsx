@@ -7,6 +7,7 @@ import { SessionProvider } from "next-auth/react";
 import { ToasterProvider } from "@/contexts/ToasterContext";
 import AppShell from "@/components/commons/AppShell/AppShell";
 import { Session } from "next-auth";
+import "handsontable/dist/handsontable.full.min.css";
 
 type AppPropsWithSession = AppProps & {
   pageProps: {
