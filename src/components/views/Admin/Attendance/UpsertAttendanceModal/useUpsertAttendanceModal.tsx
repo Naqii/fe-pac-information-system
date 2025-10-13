@@ -65,7 +65,6 @@ const useUpsertAttendanceModal = (attendanceId: string) => {
     const payload = {
       date: toDateStandard(data.date as DateValue),
       status: data.status,
-      description: data.description,
     };
     mutateUpsertAttendance(payload);
   };
