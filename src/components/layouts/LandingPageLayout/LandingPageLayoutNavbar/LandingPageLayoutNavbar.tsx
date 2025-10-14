@@ -126,7 +126,7 @@ const LandingPageLayoutNavbar = () => {
                 <NavbarMenuItem>
                   <Link
                     className="text-default-700 font-medium hover:text-[#006d63]"
-                    href="/admin/event"
+                    href="/admin/student"
                   >
                     Admin
                   </Link>
