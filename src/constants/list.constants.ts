@@ -11,7 +11,7 @@ const LIMIT_DEFAULT = LIMIT_LIST[0].value;
 const PAGE_DEFAULT = 1;
 
 const LIMIT_BANNER = 5;
-const LIMIT_CATEGORY = 8;
+const LIMIT_TEACHER = 5;
 const LIMIT_EVENT = 4;
 
 export {
@@ -20,6 +20,6 @@ export {
   LIMIT_DEFAULT,
   PAGE_DEFAULT,
   LIMIT_BANNER,
-  LIMIT_CATEGORY,
+  LIMIT_TEACHER,
   LIMIT_EVENT,
 };

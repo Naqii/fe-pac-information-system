@@ -1,10 +1,11 @@
-import PageHead from "@/components/commons/PageHead";
+import LandingPageLayout from "@/components/layouts/LandingPageLayout";
+import Home from "@/components/views/Home";
 
-export default function Home() {
+const HomePage = () => {
   return (
-    <div
-      className="flex w-full flex-col items-center justify-center gap-10">
-        <PageHead />
-    </div>
+    <LandingPageLayout title="home">
+      <Home />
+    </LandingPageLayout>
   );
-}
+};
+export default HomePage;
