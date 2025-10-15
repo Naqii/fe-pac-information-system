@@ -62,7 +62,7 @@ const LandingPageLayoutFooter = () => {
           ))}
         </div>
         <p className="w-full text-center text-white">
-          Copyright &copy; 2025 Acara. All rights reserved{" "}
+          Copyright &copy; 2025 PAC Kramas. All rights reserved{" "}
         </p>
       </div>
     </div>

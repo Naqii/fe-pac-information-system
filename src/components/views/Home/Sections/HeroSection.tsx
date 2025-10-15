@@ -19,8 +19,8 @@ const HeroSection = () => (
             <Image
               src="/images/illustration/dummy.png"
               alt="Trading platform dashboard"
-              width={400}
-              height={300}
+              width={500}
+              height={400}
               className="rounded-xl border border-white/10 shadow-2xl"
             />
           </div>
