@@ -5,10 +5,10 @@ const NAV_ITEMS = [
     label: "Home",
     href: "/",
   },
-  {
-    label: "Explore",
-    href: "/event",
-  },
+  // {
+  //   label: "Explore",
+  //   href: "/event",
+  // },
 ];
 
 const BUTTON_ITEMS = [
