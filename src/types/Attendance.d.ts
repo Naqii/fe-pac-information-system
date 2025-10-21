@@ -20,4 +20,4 @@ interface RecapResponse {
   attendance: StudentRecap[];
 }
 
-export type { IAttendance, IAttendanceForm, RecapResponse, RecapResponse };
+export type { IAttendance, IAttendanceForm, RecapResponse };

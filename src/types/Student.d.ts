@@ -12,6 +12,8 @@ interface IStudent {
   gender?: string;
   parentName?: string;
   className?: string;
+  pc?: string;
+  pac?: string;
   tanggalLahir?: string | DateValue;
   location?: {
     address: string;

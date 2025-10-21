@@ -6,6 +6,8 @@ const endpoint = {
   REGION: "/regions",
   PARENT: "/parent",
   CLASS: "/class",
+  PAC: "/pac",
+  PC: "/pc",
   LEARNING: "/learning",
   ATTENDANCE: "/attendance",
 };

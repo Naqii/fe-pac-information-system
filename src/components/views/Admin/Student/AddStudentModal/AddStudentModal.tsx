@@ -22,6 +22,7 @@ import { IParent } from "@/types/Parent";
 import { IClass } from "@/types/Class";
 import { IRegency } from "@/types/Student";
 import InputFile from "@/components/ui/InputFile";
+import { IPACForm, IPC } from "@/types/PC";
 
 interface PropType {
   isOpen: boolean;
@@ -49,9 +50,13 @@ const AddStudentModal = (props: PropType) => {
     setValue,
 
     dataClass,
+    dataPAC,
+    dataPC,
     dataParent,
     dataRegion,
     handleSearchRegion,
+
+    setSelectedPC,
   } = useAddStudentModal();
 
   useEffect(() => {
@@ -169,6 +174,53 @@ const AddStudentModal = (props: PropType) => {
                       {(classStudent: IClass) => (
                         <AutocompleteItem key={`${classStudent._id}`}>
                           {classStudent.className}
+                        </AutocompleteItem>
+                      )}
+                    </Autocomplete>
+                  )}
+                />
+                <Controller
+                  name="pc"
+                  control={control}
+                  render={({ field: { onChange, ...field } }) => (
+                    <Autocomplete
+                      {...field}
+                      defaultItems={dataPC?.data.data || []}
+                      label="PC"
+                      variant="bordered"
+                      isInvalid={errors.pc !== undefined}
+                      errorMessage={errors.pc?.message}
+                      onSelectionChange={(value) => {
+                        onChange(value);
+                        setSelectedPC(value as string);
+                      }}
+                      placeholder="Search PC Here"
+                    >
+                      {(pcStudent: IPC) => (
+                        <AutocompleteItem key={`${pcStudent._id}`}>
+                          {pcStudent.pcName}
+                        </AutocompleteItem>
+                      )}
+                    </Autocomplete>
+                  )}
+                />
+                <Controller
+                  name="pac"
+                  control={control}
+                  render={({ field: { onChange, ...field } }) => (
+                    <Autocomplete
+                      {...field}
+                      defaultItems={dataPAC || []}
+                      label="PAC"
+                      variant="bordered"
+                      isInvalid={errors.pac !== undefined}
+                      errorMessage={errors.pac?.message}
+                      onSelectionChange={(value) => onChange(value)}
+                      placeholder="Search PAC Here"
+                    >
+                      {(pac: IPACForm) => (
+                        <AutocompleteItem key={pac.pacId}>
+                          {pac.pacNames}
                         </AutocompleteItem>
                       )}
                     </Autocomplete>

@@ -4,14 +4,16 @@ import useDebounce from "@/hooks/useDebounce";
 import useMediaHandling from "@/hooks/useMediaHandling";
 import classServices from "@/services/class.services";
 import parentServices from "@/services/parent.service";
+import pcServices from "@/services/pc.services";
 import studentServices from "@/services/student.services";
+import { IPACForm } from "@/types/PC";
 import { IStudent, IStudentForm } from "@/types/Student";
 import { toDateStandard } from "@/utils/date";
 import { DateValue } from "@heroui/react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
-import { useContext, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 
@@ -24,6 +26,8 @@ const schema = Yup.object().shape({
   gender: Yup.string().required("Please input gender"),
   parentName: Yup.string().required("Please input parent name"),
   className: Yup.string().required("Please input student class"),
+  pc: Yup.string().required("Please input PC from"),
+  pac: Yup.string().required("Please input PAC from"),
   tanggalLahir: Yup.mixed<DateValue>().required("Please select birthdate"),
   region: Yup.string().required("Please select Region"),
   address: Yup.string().required("Please input address"),
@@ -92,6 +96,20 @@ const useAddStudentModal = () => {
     queryFn: () => classServices.getClass(),
     enabled: router.isReady,
   });
+
+  const [selectedPC, setSelectedPC] = useState<string | null>(null);
+
+  const { data: dataPC } = useQuery({
+    queryKey: ["PC"],
+    queryFn: () => pcServices.getPC(),
+    enabled: router.isReady,
+  });
+
+  const dataPAC = useMemo(() => {
+    const pcsArray = dataPC?.data?.data ?? [];
+    const selected = pcsArray.find((pc: IPACForm) => pc._id === selectedPC);
+    return selected?.pacList ?? [];
+  }, [dataPC, selectedPC]);
 
   const [searchRegency, setSearchRegency] = useState("");
 
@@ -162,10 +180,15 @@ const useAddStudentModal = () => {
     setValue,
 
     dataClass,
+    dataPAC,
+    dataPC,
     dataParent,
     dataRegion,
     searchRegency,
     handleSearchRegion,
+
+    setSelectedPC,
+    selectedPC,
   };
 };
 
