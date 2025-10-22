@@ -97,7 +97,7 @@ const useAddStudentModal = () => {
     enabled: router.isReady,
   });
 
-  const [selectedPC, setSelectedPC] = useState<string | null>(null);
+  const [selectedPC, setSelectedPC] = useState("");
 
   const { data: dataPC } = useQuery({
     queryKey: ["PC"],
@@ -105,7 +105,7 @@ const useAddStudentModal = () => {
     enabled: router.isReady,
   });
 
-  const dataPAC = useMemo(() => {
+  const dataPACFromPC = useMemo(() => {
     const pcsArray = dataPC?.data?.data ?? [];
     const selected = pcsArray.find((pc: IPACForm) => pc._id === selectedPC);
     return selected?.pacList ?? [];
@@ -180,8 +180,8 @@ const useAddStudentModal = () => {
     setValue,
 
     dataClass,
-    dataPAC,
     dataPC,
+    dataPACFromPC,
     dataParent,
     dataRegion,
     searchRegency,

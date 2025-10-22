@@ -50,8 +50,8 @@ const AddStudentModal = (props: PropType) => {
     setValue,
 
     dataClass,
-    dataPAC,
     dataPC,
+    dataPACFromPC,
     dataParent,
     dataRegion,
     handleSearchRegion,
@@ -196,9 +196,9 @@ const AddStudentModal = (props: PropType) => {
                       }}
                       placeholder="Search PC Here"
                     >
-                      {(pcStudent: IPC) => (
-                        <AutocompleteItem key={`${pcStudent._id}`}>
-                          {pcStudent.pcName}
+                      {(pc: IPC) => (
+                        <AutocompleteItem key={`${pc._id}`}>
+                          {pc.pcName}
                         </AutocompleteItem>
                       )}
                     </Autocomplete>
@@ -210,7 +210,7 @@ const AddStudentModal = (props: PropType) => {
                   render={({ field: { onChange, ...field } }) => (
                     <Autocomplete
                       {...field}
-                      defaultItems={dataPAC || []}
+                      defaultItems={dataPACFromPC || []}
                       label="PAC"
                       variant="bordered"
                       isInvalid={errors.pac !== undefined}

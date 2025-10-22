@@ -18,6 +18,7 @@ import {
   Textarea,
 } from "@heroui/react";
 import { Controller } from "react-hook-form";
+import { IPACForm, IPC } from "@/types/PC";
 
 interface PropType {
   dataStudent?: IStudentForm;
@@ -48,6 +49,9 @@ const InfoTab = (props: PropType) => {
     dataClass,
     dataParent,
     dataRegion,
+    dataPC,
+    dataPACFromPC,
+    setSelectedPC,
   } = useInfoTab();
 
   useEffect(() => {
@@ -57,6 +61,8 @@ const InfoTab = (props: PropType) => {
       setValueUpdateInfo("gender", `${dataStudent?.gender}`);
       setValueUpdateInfo("parentName", `${dataStudent?.parentName}`);
       setValueUpdateInfo("className", `${dataStudent?.className}`);
+      setValueUpdateInfo("pc", `${dataStudent?.pc}`);
+      setValueUpdateInfo("pac", `${dataStudent?.pac}`);
       if (dataStudent?.tanggalLahir) {
         setValueUpdateInfo(
           "tanggalLahir",
@@ -73,6 +79,12 @@ const InfoTab = (props: PropType) => {
       resetUpdateInfo();
     }
   }, [isSuccessUpdate, resetUpdateInfo]);
+
+  useEffect(() => {
+    if (dataStudent?.pc) {
+      setSelectedPC(dataStudent.pc);
+    }
+  }, [dataStudent, setSelectedPC]);
 
   return (
     <Card className="w-full p-4 lg:w-1/2">
@@ -191,6 +203,61 @@ const InfoTab = (props: PropType) => {
                   {(kelas: IStudent) => (
                     <AutocompleteItem key={`${kelas._id}`}>
                       {kelas.className}
+                    </AutocompleteItem>
+                  )}
+                </Autocomplete>
+              )}
+            />
+          </Skeleton>
+          <Skeleton isLoaded={!!dataStudent?.pc} className="rounded-lg">
+            <Controller
+              name="pc"
+              control={controlUpdateInfo}
+              render={({ field: { onChange, ...field } }) => (
+                <Autocomplete
+                  {...field}
+                  defaultItems={dataPC?.data.data || []}
+                  label="PC Student"
+                  labelPlacement="outside"
+                  variant="bordered"
+                  selectedKey={dataStudent?.pc}
+                  isInvalid={errorsUpdateInfo.pc !== undefined}
+                  errorMessage={errorsUpdateInfo.pc?.message}
+                  onSelectionChange={(value) => {
+                    onChange(value);
+                    setSelectedPC(value as string);
+                  }}
+                  placeholder="Search PC Here"
+                >
+                  {(pc: IPC) => (
+                    <AutocompleteItem key={`${pc._id}`}>
+                      {pc.pcName}
+                    </AutocompleteItem>
+                  )}
+                </Autocomplete>
+              )}
+            />
+          </Skeleton>
+          <Skeleton isLoaded={!!dataPACFromPC.length} className="rounded-lg">
+            <Controller
+              name="pac"
+              control={controlUpdateInfo}
+              render={({ field: { onChange, ...field } }) => (
+                <Autocomplete
+                  {...field}
+                  defaultItems={dataPACFromPC || []}
+                  label="PAC Student"
+                  labelPlacement="outside"
+                  variant="bordered"
+                  selectedKey={dataStudent?.pac}
+                  isInvalid={errorsUpdateInfo.pac !== undefined}
+                  errorMessage={errorsUpdateInfo.pac?.message}
+                  onSelectionChange={(value) => onChange(value)}
+                  placeholder="Search PAC Here"
+                >
+                  {(pacStudent: IPACForm) => (
+                    <AutocompleteItem key={`${pacStudent.pacId}`}>
+                      {pacStudent.pacNames}
                     </AutocompleteItem>
                   )}
                 </Autocomplete>
