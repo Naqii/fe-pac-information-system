@@ -20,7 +20,7 @@
     "exceljs": "^4.4.0",
     "file-saver": "^2.0.5",
     "handsontable": "^16.1.1",
-    "next": "15.5.7",
+    "next": "15.5.9",
     "next-auth": "^4.24.11",
     "postcss": "^8.5.6",
     "react": "19.1.0",
